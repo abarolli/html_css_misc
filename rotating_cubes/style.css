@@ -4,3 +4,75 @@
     box-sizing: 0;
 }
 
+:root {
+    height: 100%;
+    --cube-size: 100px;
+    --translate-by: calc(var(--cube-size) / 2);
+}
+
+body {
+    height: 100%;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cube {
+    position: relative;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    transform-style: preserve-3d;
+    animation: spin 2s linear infinite;
+}
+
+.face {
+    width: inherit;
+    height: inherit;
+    background-color: red;
+    position: absolute;
+    opacity: 0.75;
+}
+
+.face6 {
+    transform: translateX(calc(var(--translate-by) * -1)) rotateY(90deg);
+    background-color: green;
+}
+
+.face5 {
+    transform: translateX(var(--translate-by)) rotateY(-90deg);
+    background-color: blue;
+}
+
+.face4 {
+    transform: translateY(calc(var(--translate-by) * -1)) rotateX(90deg);
+    background-color: orange;
+}
+
+.face3 {
+    transform: translateY(var(--translate-by)) rotateX(-90deg);
+    background-color: magenta;
+}
+
+.face2 {
+    transform: translateZ(var(--translate-by));
+    background-color: indigo;
+}
+
+.face1 {
+    transform: translateZ(calc(var(--translate-by) * -1));
+}
+
+.face:hover {
+    background-color: lightblue;
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+    to {
+        transform: rotateY(360deg) rotateX(360deg);
+    }
+}
