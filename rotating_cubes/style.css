@@ -37,7 +37,7 @@ h1 {
 .user-info {
     transform: translateY(-75px);
     text-align: center;
-    transition: 1s linear;
+    transition: 2s linear;
     position: relative;
 }
 
@@ -103,13 +103,18 @@ h1 {
     animation: spin 3s linear infinite;
 }
 
+
+.--changing-colors {
+    animation: animate-background 10s linear infinite;
+}
+
 .--invisible {
     opacity: 0;
     visibility: hidden;
 }
 
 .--visible {
-    animation: make-visible 3s linear 1;
+    animation: make-visible 5s linear 1;
 }
 
 .--clickable:hover {
@@ -136,5 +141,29 @@ h1 {
     to {
         opacity: 1;
         visibility: visible;
+    }
+}
+
+@keyframes animate-background {
+    0% {
+        background-color: dodgerblue;
+    }
+    20% {
+        background-color: violet;
+    }
+    40% {
+        background-color: red;
+    }
+    60% {
+        background-color: orange;
+    }
+    80% {
+        background-color: green;
+    }
+    97% {
+        background-color: blue;
+    }
+    100% {
+        background-color: dodgerblue;
     }
 }

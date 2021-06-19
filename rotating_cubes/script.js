@@ -143,6 +143,8 @@ button.onclick = e => {
     cubes.forEach(cube => {
         cube.asElement.classList.add("--spinning");
     });
+
+    body.classList.add("--changing-colors");
 };
 
 
@@ -156,5 +158,7 @@ myAudio.onended = e => {
     superCube.asElement.classList.remove("--spinning");
     cubes.forEach(cube => {
         cube.asElement.classList.remove("--spinning");
-    })
+    });
+
+    body.classList.remove("--changing-colors");
 };
