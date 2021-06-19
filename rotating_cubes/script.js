@@ -53,7 +53,6 @@ for (let i = 0; i < tempCubes.length; ++i) {
     cubes.push(new Cube(tempCubes[i]));
 }
 
-
 superCube.asElement.onmousedown = e => {
     e.preventDefault();
     superCube.isFocused = true;
