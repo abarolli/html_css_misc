@@ -16,6 +16,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.super-cube {
+    transform-style: preserve-3d;
 }
 
 .cube {
@@ -23,7 +28,7 @@ body {
     width: var(--cube-size);
     height: var(--cube-size);
     transform-style: preserve-3d;
-    animation: spin 2s linear infinite;
+    display: inline-block;
 }
 
 .face {
@@ -31,7 +36,6 @@ body {
     height: inherit;
     background-color: red;
     position: absolute;
-    opacity: 0.75;
 }
 
 .face6 {
@@ -68,11 +72,11 @@ body {
 }
 
 
-@keyframes spin {
+/* @keyframes spin {
     from {
         transform: rotateY(0deg) rotateX(0deg);
     }
     to {
         transform: rotateY(360deg) rotateX(360deg);
     }
-}
+} */
