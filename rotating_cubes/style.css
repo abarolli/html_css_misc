@@ -14,20 +14,37 @@
 
 body {
     height: 100%;
-    background-color: yellow;
+    background-color: dodgerblue;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
 }
 
 h1 {
     transform: translateY(-100px);
 }
 
+.audio-button {
+    margin-top: 10px;
+    padding: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: yellow;
+    border-radius: 10px;
+}
+
 .user-info {
     transform: translateY(-75px);
     text-align: center;
+    transition: 1s linear;
+    position: relative;
+}
+
+.artist-credit {
+    text-align: center;
+    position: absolute;
+    transform: translateY(-150px);
 }
 
 .super-cube {
@@ -80,4 +97,44 @@ h1 {
 
 .face:hover {
     background-color: lightblue;
+}
+
+.--spinning {
+    animation: spin 3s linear infinite;
+}
+
+.--invisible {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.--visible {
+    animation: make-visible 3s linear 1;
+}
+
+.--clickable:hover {
+    transition: 0.1s linear;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px black;
+}
+
+@keyframes spin {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+
+@keyframes make-visible {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
 }

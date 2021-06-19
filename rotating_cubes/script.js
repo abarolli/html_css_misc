@@ -127,3 +127,34 @@ function getMouseDeltaXY(e) {
     let [mousePosX, mousePosY] = getMousePos(e);
     return [mousePosX - mouse.initPosX, mousePosY - mouse.initPosY];
 }
+
+let button = document.querySelector(".audio-button");
+let artistCredit = document.querySelector(".artist-credit");
+let userInfo = document.querySelector(".user-info");
+let myAudio = document.querySelector("audio");
+button.onclick = e => {
+    myAudio.play();
+    userInfo.classList.add("--invisible");
+
+    artistCredit.classList.remove("--invisible");
+    artistCredit.classList.add("--visible");
+
+    superCube.asElement.classList.add("--spinning");
+    cubes.forEach(cube => {
+        cube.asElement.classList.add("--spinning");
+    });
+};
+
+
+myAudio.onended = e => {
+    userInfo.classList.remove("--invisible");
+    userInfo.classList.add("--visible");
+
+    artistCredit.classList.remove("--visible");
+    artistCredit.classList.add("--invisible");
+
+    superCube.asElement.classList.remove("--spinning");
+    cubes.forEach(cube => {
+        cube.asElement.classList.remove("--spinning");
+    })
+};
