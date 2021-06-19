@@ -26,7 +26,7 @@ h1 {
     transform: translateY(-100px);
 }
 
-.audio-button {
+.y-button {
     margin-top: 10px;
     padding: 10px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -37,7 +37,7 @@ h1 {
 .user-info {
     transform: translateY(-75px);
     text-align: center;
-    transition: 2s linear;
+    /* transition: 2s linear; */
     position: relative;
 }
 
@@ -45,6 +45,12 @@ h1 {
     text-align: center;
     position: absolute;
     transform: translateY(-150px);
+}
+
+.stop-animation-button {
+    text-align: center;
+    position: absolute;
+    transform: translateY(-200px);
 }
 
 .super-cube {
@@ -114,7 +120,7 @@ h1 {
 }
 
 .--visible {
-    animation: make-visible 5s linear 1;
+    animation: make-visible 1s linear 1;
 }
 
 .--clickable:hover {

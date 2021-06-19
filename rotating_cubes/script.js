@@ -128,16 +128,21 @@ function getMouseDeltaXY(e) {
     return [mousePosX - mouse.initPosX, mousePosY - mouse.initPosY];
 }
 
-let button = document.querySelector(".audio-button");
+
+let audioButton = document.querySelector(".audio-button");
+let stopAudioButton = document.querySelector(".stop-animation-button");
 let artistCredit = document.querySelector(".artist-credit");
 let userInfo = document.querySelector(".user-info");
 let myAudio = document.querySelector("audio");
-button.onclick = e => {
+audioButton.onclick = e => {
     myAudio.play();
     userInfo.classList.add("--invisible");
 
     artistCredit.classList.remove("--invisible");
     artistCredit.classList.add("--visible");
+
+    stopAudioButton.classList.remove("--invisible");
+    stopAudioButton.classList.add("--visible");
 
     superCube.asElement.classList.add("--spinning");
     cubes.forEach(cube => {
@@ -155,6 +160,9 @@ myAudio.onended = e => {
     artistCredit.classList.remove("--visible");
     artistCredit.classList.add("--invisible");
 
+    stopAudioButton.classList.remove("--visible");
+    stopAudioButton.classList.add("--invisible");
+
     superCube.asElement.classList.remove("--spinning");
     cubes.forEach(cube => {
         cube.asElement.classList.remove("--spinning");
@@ -162,3 +170,24 @@ myAudio.onended = e => {
 
     body.classList.remove("--changing-colors");
 };
+
+
+stopAudioButton.onclick = e => {
+
+    myAudio.pause();
+    userInfo.classList.remove("--invisible");
+    userInfo.classList.add("--visible");
+
+    artistCredit.classList.remove("--visible");
+    artistCredit.classList.add("--invisible");
+
+    stopAudioButton.classList.remove("--visible");
+    stopAudioButton.classList.add("--invisible");
+
+    superCube.asElement.classList.remove("--spinning");
+    cubes.forEach(cube => {
+        cube.asElement.classList.remove("--spinning");
+    });
+
+    body.classList.remove("--changing-colors");
+}
