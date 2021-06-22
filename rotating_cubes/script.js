@@ -59,7 +59,7 @@ superCube.asElement.onmousedown = e => {
     [mouse.initPosX, mouse.initPosY] = getMousePos(e);
 };
 
-keyFlags = {};
+let keyFlags = {};
 
 
 body.onmouseup = e => {
@@ -104,8 +104,29 @@ body.onkeyup = e => {
     keyFlags[e.key] = false;
 };
 
+
+function scratchElementIfNotAlready(element) {
+    if (!element.classList.contains("--scratched"))
+            element.classList.add("--scratched");
+}
+
+
+function makeElementVisibleIfNotAlready(element) {
+    if (!element.classList.contains("--visible")) {
+        element.classList.remove("--invisible");
+        element.classList.add("--visible");
+    }
+}
+
+
+let squareInTitle = document.getElementById("title-square");
+let cubeInTitle = document.getElementById("title-cube");
 body.onmousemove = e => {
     if (superCube.isFocused) {
+        
+        scratchElementIfNotAlready(squareInTitle);
+        makeElementVisibleIfNotAlready(cubeInTitle);
+
         [mouse.deltaX, mouse.deltaY] = getMouseDeltaXY(e);
 
         if (keyFlags.Shift) {
@@ -135,7 +156,15 @@ let artistCredit = document.querySelector(".artist-credit");
 let userInfo = document.querySelector(".user-info");
 let myAudio = document.querySelector("audio");
 audioButton.onclick = e => {
-    myAudio.play();
+    
+    scratchElementIfNotAlready(squareInTitle);
+    makeElementVisibleIfNotAlready(cubeInTitle);
+
+    myAudio.play().then(startRotating());
+};
+
+
+function startRotating() {
     userInfo.classList.add("--invisible");
 
     artistCredit.classList.remove("--invisible");
@@ -150,44 +179,35 @@ audioButton.onclick = e => {
     });
 
     body.classList.add("--changing-colors");
-};
+}
 
 
 myAudio.onended = e => {
-    userInfo.classList.remove("--invisible");
-    userInfo.classList.add("--visible");
-
-    artistCredit.classList.remove("--visible");
-    artistCredit.classList.add("--invisible");
-
-    stopAudioButton.classList.remove("--visible");
-    stopAudioButton.classList.add("--invisible");
-
-    superCube.asElement.classList.remove("--spinning");
-    cubes.forEach(cube => {
-        cube.asElement.classList.remove("--spinning");
-    });
-
-    body.classList.remove("--changing-colors");
+    stopRotating();
 };
 
 
 stopAudioButton.onclick = e => {
-
     myAudio.pause();
+    stopRotating();
+}
+
+
+function stopRotating() {
+    
     userInfo.classList.remove("--invisible");
     userInfo.classList.add("--visible");
-
+    
     artistCredit.classList.remove("--visible");
     artistCredit.classList.add("--invisible");
-
+    
     stopAudioButton.classList.remove("--visible");
     stopAudioButton.classList.add("--invisible");
-
+    
     superCube.asElement.classList.remove("--spinning");
     cubes.forEach(cube => {
         cube.asElement.classList.remove("--spinning");
     });
-
+    
     body.classList.remove("--changing-colors");
 }
